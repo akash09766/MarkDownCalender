@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="FleetStarTextView">
+        <attr name="fontName" format="string" />
+   	</declare-styleable>
+    <!-- Styles -->
+    <attr name="styleCaldroidViewLayout" format="reference"/>
+    <attr name="styleCaldroidLeftArrow" format="reference"/>
+    <attr name="styleCaldroidRightArrow" format="reference"/>
+    <attr name="styleCaldroidMonthName" format="reference"/>
+    <attr name="styleCaldroidNormalCell" format="reference"/>
+    <attr name="styleCaldroidSquareCell" format="reference"/>
+    <attr name="styleCaldroidGridView" format="reference"/>
+    <attr name="styleCaldroidWeekdayView" format="reference"/>
+
+    <!-- Custom states -->
+    <declare-styleable name="DateState">
+        <attr name="state_date_today" format="boolean"/>
+        <attr name="state_date_selected" format="boolean"/>
+        <attr name="state_date_disabled" format="boolean"/>
+        <attr name="state_date_prev_next_month" format="boolean"/>
+    </declare-styleable>
+
+    <!-- Declare stylable attribute for a cell -->
+    <declare-styleable name="Cell" >
+        <attr name="android:textColor" />
+        <attr name="android:background" />
+    </declare-styleable>
+
+    <declare-styleable name="DayPickerView">
+        <attr name="colorCurrentDay" format="color" />
+        <attr name="colorSelectedDayBackground" format="color" />
+        <attr name="colorSelectedDayText" format="color" />
+        <attr name="colorPreviousDay" format="color" />
+        <attr name="colorNormalDay" format="color" />
+        <attr name="colorMonthName" format="color" />
+        <attr name="colorDayName" format="color" />
+        <attr name="textSizeDay" format="dimension" />
+        <attr name="textSizeMonth" format="dimension" />
+        <attr name="textSizeDayName" format="dimension" />
+        <attr name="headerMonthHeight" format="dimension" />
+        <attr name="selectedDayRadius" format="dimension" />
+        <attr name="calendarHeight" format="dimension" />
+        <attr name="enablePreviousDay" format="boolean" />
+        <attr name="currentDaySelected" format="boolean" />
+        <attr name="drawRoundRect" format="boolean" />
+        <attr name="firstMonth" format="enum">
+            <enum name="january" value="0" />
+            <enum name="february" value="1" />
+            <enum name="march" value="2" />
+            <enum name="april" value="3" />
+            <enum name="may" value="4" />
+            <enum name="june" value="5" />
+            <enum name="july" value="6" />
+            <enum name="august" value="7" />
+            <enum name="september" value="8" />
+            <enum name="october" value="9" />
+            <enum name="november" value="10" />
+            <enum name="december" value="11" />
+        </attr>
+        <attr name="lastMonth" format="enum">
+            <enum name="january" value="0" />
+            <enum name="february" value="1" />
+            <enum name="march" value="2" />
+            <enum name="april" value="3" />
+            <enum name="may" value="4" />
+            <enum name="june" value="5" />
+            <enum name="july" value="6" />
+            <enum name="august" value="7" />
+            <enum name="september" value="8" />
+            <enum name="october" value="9" />
+            <enum name="november" value="10" />
+            <enum name="december" value="11" />
+        </attr>
+    </declare-styleable>
+    <declare-styleable name="CircularImageView">
+        <attr name="border" format="boolean"></attr>
+        <attr name="border_width" format="dimension"></attr>
+        <attr name="border_color" format="color"></attr>
+        <attr name="shadow" format="boolean"></attr>
+    </declare-styleable>
+    <declare-styleable name="Theme">
+        <attr name="circularImageViewStyle" format="reference"></attr>
+    </declare-styleable>
+
+    <declare-styleable name="CustomCalendarView">
+        <attr name="calendarTitleTextColor" format="color" />
+        <attr name="dayOfWeekTextColor" format="color" />
+        <attr name="dayOfMonthTextColor" format="color" />
+        <attr name="calendarBackgroundColor" format="color" />
+        <attr name="disabledDayBackgroundColor" format="color" />
+        <attr name="CalendarDayBack" format="color" />
+        <attr name="disabledDayTextColor" format="color" />
+        <attr name="selectedDayBackgroundColor" format="color" />
+        <attr name="selectedDayTextColor" format="color" />
+        <attr name="weekLayoutBackgroundColor" format="color" />
+        <attr name="titleLayoutBackgroundColor" format="color" />
+        <attr name="currentDayOfMonthColor" format="color" />
+    </declare-styleable>
+
+
+</resources>

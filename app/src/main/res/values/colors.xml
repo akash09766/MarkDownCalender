@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="present">#43A047</color>
+    <color name="absent">#E53935</color>
+    <color name="holiday">#BDBDBD</color>
+
+
+
+    <color name="home_feed">#FAFAFA</color>
+    <color name="primaryColor">#3F51B5</color>
+    <color name="primaryLightColor">#3F51B5</color>
+    <color name="primaryDarkColor">#303F9F</color>
+    <color name="primaryTextColor">#000000</color>
+
+    <color name="transparent">#00000000</color>
+    <color name="login_flow_text_color">#434445</color>
+    <color name="white">#FFFFFF</color>
+    <color name="background">#4bcdc0</color>
+    <color name="login_heading">#2f2f2f</color>
+    <color name="navigation_drawer_header_color">#52555A</color>
+    <color name="route_background">#f4f4f4</color>
+    <color name="navigation_drawer_background">#0B0B0C</color>
+    <color name="my_roster_bg">#F0F1F2</color>
+
+    <color name="caldroid_white">#FFFFFF</color>
+    <color name="caldroid_black">#000000</color>
+    <color name="caldroid_transparent">#00000000</color>
+    <!-- For settings framework -->
+    <color name="caldroid_lighter_gray">#ddd</color>
+    <color name="caldroid_gray">#CCC</color>
+    <color name="light_caldroid_gray">#f5f3f3</color>
+    <color name="caldroid_darker_gray">#aaa</color>
+    <color name="caldroid_middle_gray">#888</color>
+    <!-- A light Holo shade of blue -->
+    <color name="caldroid_holo_blue_light">#ff33b5e5</color>
+    <!-- A dark Holo shade of blue -->
+    <color name="caldroid_holo_blue_dark">#ff0099cc</color>
+    <!-- A really bright Holo shade of blue -->
+    <color name="caldroid_sky_blue">#FFA3E8F7</color>
+
+    <color name="textTitleColor">#85898B</color>
+    <color name="background_color">#F2F2F4</color>
+    <color name="black_color">#000000</color>
+
+    <color name="list_text">#343A3D</color>
+    <color name="dark_gray">#363F44</color>
+    <color name="listview_title_color">#353b3e</color>
+    <color name="yellow">#fe9f00</color>
+    <color name="list_text_color">#363B3E</color>
+    <color name="tab_background_selected">#FC9E00</color>
+    <color name="tab_background_unselected">#D7D7D7</color>
+
+    <color name="caldroid_333">#333</color>
+    <color name="caldroid_555">#555</color>
+    <color name="caldroid_light_red">#ff7f7f</color>
+    <color name="divider_color">#c4c4c4</color>
+    <color name="not_register_user">#ffffff</color>
+    <color name="custom_leave">#CCCCFF</color>
+    <color name="custom_time">#87CEEB</color>
+    <color name="weekly_off">#F5DA81</color>
+    <color name="regular_shift">#F5F5F5</color>
+    <color name="normal_day">#000</color>
+    <color name="week_end">#ff0000</color>
+    <color name="disable">#d3d3d3</color>
+    <color name="selected_day_background">#FF4546</color>
+    <color name="selected_day_text">#fff</color>
+
+
+    <color name="blue">#00abea</color>
+    <color name="red">#F25536</color>
+    <color name="orange">#F25930</color>
+    <color name="dark_blue">#2C8AEE</color>
+    <color name="roster_color">#FC6E62</color>
+    <color name="custom_leave_color">#3E70C7</color>
+    <color name="adhoc_color">#65BD66</color>
+    <color name="trip_cancellation_color">#FFAF02</color>
+    <color name="faq_color">#D54161</color>
+    <color name="bus_route_color">#847CC5</color>
+    <color name="emergency_contact_color">#697078</color>
+    <color name="light_blue">#2982C2</color>
+    <color name="gray">#ADADAD</color>
+    <color name="light_gray">#DEB887</color>
+    <color name="d_blue">#4AA0DD</color>
+
+    <color name="white1">#FFFFFF</color>
+    <color name="black">#222222</color>
+    <color name="day_disabled_background_color">#F1F5F8</color>
+    <color name="day_disabled_text_color">#DEDEDE</color>
+    <color name="selected_day_background1">#03A7E9</color>
+    <color name="current_day_of_month">#FFFFFF</color>
+</resources>
