@@ -3,7 +3,6 @@ package com.developer.skylight.markdowncalender.calender;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.TypedArray;
 import android.graphics.Typeface;
@@ -20,25 +19,14 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.volley.DefaultRetryPolicy;
-import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.developer.skylight.markdowncalender.R;
 import com.developer.skylight.markdowncalender.model.CalenderData;
 import com.developer.skylight.markdowncalender.model.ResponseData;
 import com.developer.skylight.markdowncalender.util.Constants;
-import com.developer.skylight.markdowncalender.util.Utils;
 import com.google.gson.Gson;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.io.IOException;
 import java.io.InputStream;
-import java.text.DateFormat;
 import java.text.DateFormatSymbols;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -64,7 +52,7 @@ public class CustomCalendarView extends LinearLayout {
     private Typeface customTypeface;
     float x1, x2;
     float y1, y2;
-    private int firstDayOfWeek = Calendar.SUNDAY;
+    private int firstDayOfWeek = Calendar.MONDAY;
     int pickMaxLine, dropMaxLine;
     private List<DayDecorator> decorators = null;
 
@@ -315,7 +303,7 @@ public class CustomCalendarView extends LinearLayout {
         Calendar calendar = Calendar.getInstance(locale);
         calendar.setTime(currentCalendar.getTime());
         calendar.set(Calendar.DAY_OF_MONTH, 1);
-        calendar.setFirstDayOfWeek(Calendar.SUNDAY);
+        calendar.setFirstDayOfWeek(Calendar.MONDAY);
         int firstDayOfMonth = calendar.get(Calendar.DAY_OF_WEEK);
 
         // Calculate dayOfMonthIndex
@@ -456,7 +444,7 @@ public class CustomCalendarView extends LinearLayout {
     private void clearDayOfTheMonthStyle(Date currentDate) {
         if (currentDate != null) {
             final Calendar calendar = getTodaysCalendar();
-            calendar.setFirstDayOfWeek(Calendar.SUNDAY);
+            calendar.setFirstDayOfWeek(Calendar.MONDAY);
             calendar.setTime(currentDate);
 
             final DayView dayView = getDayOfMonthText(calendar);
@@ -478,7 +466,7 @@ public class CustomCalendarView extends LinearLayout {
 
     private int getMonthOffset(Calendar currentCalendar) {
         final Calendar calendar = Calendar.getInstance();
-        calendar.setFirstDayOfWeek(Calendar.SUNDAY);
+        calendar.setFirstDayOfWeek(Calendar.MONDAY);
         calendar.setTime(currentCalendar.getTime());
         calendar.set(Calendar.DAY_OF_MONTH, 1);
 
@@ -518,14 +506,14 @@ public class CustomCalendarView extends LinearLayout {
 
     private Calendar getTodaysCalendar() {
         Calendar currentCalendar = Calendar.getInstance(mContext.getResources().getConfiguration().locale);
-        currentCalendar.setFirstDayOfWeek(Calendar.SUNDAY);
+        currentCalendar.setFirstDayOfWeek(Calendar.MONDAY);
         return currentCalendar;
     }
 
     @SuppressLint("DefaultLocale")
     public void refreshCalendar(Calendar currentCalendar) {
         this.currentCalendar = currentCalendar;
-        this.currentCalendar.setFirstDayOfWeek(Calendar.SUNDAY);
+        this.currentCalendar.setFirstDayOfWeek(Calendar.MONDAY);
         locale = mContext.getResources().getConfiguration().locale;
 
         // Set date title
@@ -557,7 +545,7 @@ public class CustomCalendarView extends LinearLayout {
 
     /*public void markDayAsSelectedDay(Date currentDate) {
         final Calendar currentCalendar = getTodaysCalendar();
-        currentCalendar.setFirstDayOfWeek(Calendar.SUNDAY);
+        currentCalendar.setFirstDayOfWeek(Calendar.MONDAY);
         currentCalendar.setTime(currentDate);
 
         // Clear previous marks
@@ -590,6 +578,7 @@ public class CustomCalendarView extends LinearLayout {
             tagId = tagId.substring(DAY_OF_MONTH_CONTAINER.length(), tagId.length());
             final TextView dayOfMonthText = (TextView) view.findViewWithTag(DAY_OF_MONTH_TEXT + tagId);
 
+            showToast(dayOfMonthText.getText().toString());
             Log.d(TAG, "onClick: dayOfMonthText : " + dayOfMonthText.getText().toString());
 
             // Extract day selected
@@ -599,7 +588,7 @@ public class CustomCalendarView extends LinearLayout {
             final TextView dayOfMonthText = (TextView) view.findViewWithTag(DAY_OF_MONTH_TEXT + tagId);
             // Fire event
             final Calendar calendar = Calendar.getInstance();
-            calendar.setFirstDayOfWeek(Calendar.SUNDAY);
+            calendar.setFirstDayOfWeek(Calendar.MONDAY);
             calendar.setTime(currentCalendar.getTime());
             calendar.set(Calendar.DAY_OF_MONTH, Integer.valueOf(dayOfMonthText.getText().toString()));
             //  markDayAsSelectedDay(calendar.getTime());
@@ -618,6 +607,11 @@ public class CustomCalendarView extends LinearLayout {
                 calendarListener.onDateSelected(calendar.getTime());*/
         }
     };
+
+    private void showToast(String msg) {
+
+        Toast.makeText(getContext(), msg, Toast.LENGTH_SHORT).show();
+    }
 
     public List<DayDecorator> getDecorators() {
         return decorators;
@@ -703,104 +697,6 @@ public class CustomCalendarView extends LinearLayout {
         this.mActivity = mActivity;
         mActivity.getFragmentManager();
     }
-
-   /* public void getDateDetails(String day, final int month, final int year, final String date) {
-        Utils.ShowProgressBar(Utils.myContext);
-        String url = null;
-        int endDay = 0;
-        try {
-            //end date
-            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
-            SimpleDateFormat sf = new SimpleDateFormat("dd MMM yyyy");
-            //Date date1 = sf.parse(date);
-            Date todate = sf.parse(date);
-
-            Calendar cal = Calendar.getInstance();
-            cal.setTime(todate);
-            cal.add(Calendar.DATE, 7);
-
-            int endMonth = cal.get(Calendar.MONTH) + 1;
-
-            if (endMonth > month) {
-                Calendar calendar = Calendar.getInstance();
-
-                endDay = calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
-            } else {
-                endDay = cal.get(Calendar.DATE);
-            }
-
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        try {
-            SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-
-
-            String rosterString = sp.getString("calendarDataJson", "");
-            JSONArray calendarJsonArray = new JSONArray(rosterString);
-            int i;
-
-            list.clear();
-            int startDay = Integer.parseInt(day) - 1;
-            for (i = startDay; i < endDay - 1; i++) {
-
-
-                HashMap<String, String> map = new HashMap<>();
-                JSONObject jsonObj = calendarJsonArray
-                        .getJSONObject(i);
-                Date date1 = df.parse(jsonObj.getString("Day") + "/" + month + "/" + year);
-
-                String formatString1 = (String) android.text.format.DateFormat
-                        .format("EEE", date1)
-                        + ", "
-                        + (String) android.text.format.DateFormat.format("MMM",
-                        date1)
-                        + " "
-                        + (String) android.text.format.DateFormat
-                        .format("dd", date1)
-                        + ", "
-                        + (String) android.text.format.DateFormat.format("yyyy",
-                        date1);
-                // dayStatusArray.add(jsonObj.getString("DayStatus"));
-                // dateArray.add(jsonObj.getString("Day"));
-                map.put("date", formatString1);
-                map.put("inTime", jsonObj.getString("InTime"));
-                map.put("outTime", jsonObj.getString("OutTime"));
-                list.add(map);
-
-            }
-
-
-            Intent intent = new Intent(getContext(), RosterCalendarDetails.class);
-            intent.putExtra("list", list);
-            getContext().startActivity(intent);
-                                   *//* Fragment rosterCalendarDetails = new RosterCalendarDetails();
-                                    //    ((CustomCalendarView)findViewById(R.id.content_frame)).setmActivity(rosterCalendarDetails);
-
-                                    mActivity.getFragmentManager().beginTransaction()
-                                            .replace(R.id.content_frame, rosterCalendarDetails)
-                                            .addToBackStack(null).commit();*//*
-
-
-            //refreshCalendar(currentCalendar);
-
-        } catch (JSONException e) {
-
-            Utils.EndProgressBar();
-            e.printStackTrace();
-        } catch (Exception e) {
-
-            Utils.EndProgressBar();
-            e.printStackTrace();
-        }
-
-        Utils.EndProgressBar();
-
-
-    }*/
-
     public Date getDate(int i) {
         SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
         Date date = null;
